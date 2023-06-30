@@ -1,28 +1,20 @@
 const questions = document.querySelectorAll('.question');
 const answers = document.querySelectorAll('.answer');
 
-for (let answer of answers) {
-    answer.style.display = "none";
-}
-
-questions.forEach((question) => {
+questions.forEach(question => {
     question.addEventListener('click', showAnswers)
 });
 
 function showAnswers() {
     hideAnswers()
-    this.classList.toggle("active");
+    this.classList.toggle("active")
     let panel = this.nextElementSibling;
-
-    if (panel.className === 'active') {
-        panel.style.display = "none";
+    if(this.classList.contains("active")) {
+        panel.style.display = "block"
     } else {
-        answers.forEach((answer) => {
-            answer.style.display = "none";
-        }); 
-        panel.className = 'active'
-    }
-
+        this.classList.remove("active")
+        panel.style.display = "none"
+    }   
 }
 
 function hideAnswers() {
@@ -31,4 +23,3 @@ function hideAnswers() {
         answer.previousElementSibling.classList.remove("active");
     });
 }
-  
